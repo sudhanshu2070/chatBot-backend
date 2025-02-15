@@ -1,16 +1,15 @@
 from fastapi import FastAPI
-from app.api.endpoints.example import router as example_router
-from app.core.config import settings
+from app.api.endpoints.chatpdf import router as chatpdf_router
 
 app = FastAPI(
-    title=settings.PROJECT_NAME,
+    title="FastAPI ChatPDF Integration",
     version="0.1.0",
-    description="A FastAPI + MongoDB Boilerplate Project"
+    description="A FastAPI project integrated with ChatPDF."
 )
 
 # Include routers
-app.include_router(example_router, prefix="/api/v1")
+app.include_router(chatpdf_router, prefix="/api/v1")
 
 @app.get("/", tags=["Root"])
 async def root():
-    return {"message": "Welcome to the FastAPI + MongoDB Boilerplate!"}
+    return {"message": "Welcome to the FastAPI ChatPDF Integration!"}

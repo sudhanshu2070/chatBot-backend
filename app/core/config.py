@@ -1,10 +1,9 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "FastAPI MongoDB Boilerplate"
-    DEBUG: bool = True
-    MONGODB_URL: str = "mongodb://localhost:27017"  # MongoDB connection URL
-    MONGODB_DB_NAME: str = "my_fastapi_db"          # Database name
+    PROJECT_NAME: str
+    DEBUG: bool
+    CHATPDF_API_KEY: str
 
     class Config:
         env_file = ".env"
