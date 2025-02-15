@@ -1,0 +1,73 @@
+# Byte-compiled Python files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# PyCharm and other IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Log files
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Testing
+.coverage
+coverage.xml
+htmlcov/
+.nox/
+.tox/
+pytest_cache/
+.cache/
+nosetests.xml
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# FastAPI-specific
+app/__pycache__/
+tests/__pycache__/
+
+# MongoDB data (if using Docker volumes)
+mongodb_data/
+
+# Other temporary files
+*.tmp
+*.swp
+*~
