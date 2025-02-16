@@ -65,6 +65,11 @@ async def query_pdf(question: dict):
         ],
     }
 
+    # Print URL and headers for debugging
+    print(f"URL: {CHATPDF_API_URL}/chat")
+    print(f"Headers: {headers}")
+    print(f"Payload: {payload}")
+
     # Send the query to ChatPDF
     response = requests.post(
         f"{CHATPDF_API_URL}/chat",
