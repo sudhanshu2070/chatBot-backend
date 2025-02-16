@@ -54,21 +54,23 @@ async def query_pdf(question: dict):
     if not source_id:
         raise HTTPException(status_code=400, detail="No PDF has been uploaded yet.")
 
+    # Ensure the content is a string
+    user_question = question.get("question")
+    if not user_question:
+        raise HTTPException(status_code=400, detail="Question is required.")
+
     # Prepare the query payload
     payload = {
         "sourceId": source_id,
         "messages": [
             {
                 "role": "user",
-                "content": question.get("question"),
+                "content": user_question,  # Ensure this is a string
             }
         ],
     }
 
-    # Print URL and headers for debugging
-    print(f"URL: {CHATPDF_API_URL}/chat")
-    print(f"Headers: {headers}")
-    print(f"Payload: {payload}")
+    print(f"Payload sent to ChatPDF: {payload}")  # Log the payload for debugging
 
     # Send the query to ChatPDF
     response = requests.post(
@@ -77,9 +79,10 @@ async def query_pdf(question: dict):
         json=payload,
     )
 
+    print(f"ChatPDF Query Response: {response.status_code}, {response.json()}")  # Log the response
+
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail=response.json())
 
-    # Extract the response content
     answer = response.json().get("content")
     return {"answer": answer}
