@@ -74,7 +74,7 @@ async def query_pdf(question: dict):
 
     # Send the query to ChatPDF
     response = requests.post(
-        f"{CHATPDF_API_URL}/chat",
+        "https://api.chatpdf.com/v1/chats/message",
         headers=headers,
         json=payload,
     )
@@ -84,5 +84,7 @@ async def query_pdf(question: dict):
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail=response.json())
 
-    answer = response.json().get("content")
+    #answer = response.json().get("content")
+    response_data = response.json()
+    answer = response_data.get("content", "No response received from ChatPDF.")
     return {"answer": answer}
