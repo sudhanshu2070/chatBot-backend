@@ -70,7 +70,7 @@ async def query_pdf(question: dict):
         ],
     }
 
-    # print(f"Payload sent to ChatPDF: {payload}")  # Log the payload for debugging
+    print(f"Payload sent to ChatPDF: {payload}")  # Log the payload for debugging
 
     # Send the query to ChatPDF
     response = requests.post(
@@ -79,7 +79,7 @@ async def query_pdf(question: dict):
         json=payload,
     )
 
-    # print(f"ChatPDF Query Response: {response.status_code}, {response.json()}")  # Log the response
+    print(f"ChatPDF Query Response: {response.status_code}, {response.json()}")  # Log the response
 
     if response.status_code != 200:
         raise HTTPException(status_code=response.status_code, detail=response.json())
